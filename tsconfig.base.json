@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@github-search/core-data": ["libs/core-data/src/index.ts"]
+      "@github-search/core-data": ["libs/core-data/src/index.ts"],
+      "@github-search/material": ["libs/material/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

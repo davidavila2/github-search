@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "core-data": "libs/core-data",
+    "material": "libs/material",
     "workspace": "apps/workspace",
     "workspace-e2e": "apps/workspace-e2e"
   }
