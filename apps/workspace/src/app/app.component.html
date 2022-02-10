@@ -1,1 +1,15 @@
-<github-search-nx-welcome></github-search-nx-welcome>
+<h1>Yooo Search for a User</h1>
+<form #searchForm="ngForm" (ngSubmit)="searchForUser(searchForm.value.user)">
+  <input name="user" [(ngModel)]="name" name="user" />
+
+  <button type="submit">find users</button>
+
+  <ul *ngIf="users$ as user; else loading">
+    <li *ngFor="let item of user?.items">
+      {{item.login}}
+      <img [src]="item?.avatar_url" />
+    </li>
+  </ul>
+
+  <ng-template #loading>Search for a user!</ng-template>
+</form>
