@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@github-search/core-data": ["libs/core-data/src/index.ts"],
+      "@github-search/core-state": ["libs/core-state/src/index.ts"],
       "@github-search/material": ["libs/material/src/index.ts"]
     }
   },
