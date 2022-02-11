@@ -8,14 +8,23 @@ import { map } from 'rxjs';
 })
 
 export class AppComponent {
-  name!: '';
+  defaultSearch = {
+    name: '',
+  };
+
   users$!: Users;
 
   constructor(private githubService: GithubService) { }
 
-  searchForUser(user: string): void {
-    this.githubService.searchForUser(user).pipe(
+  searchForUser(user: string, perPage?: number, page?: number): void {
+    this.githubService.searchForUser(user, perPage, page).pipe(
       map((users) => this.users$ = users)
     ).subscribe()
+  }
+
+  letsChangeThePage(event: any) {
+    event.page = 1;
+
+    this.searchForUser(this.defaultSearch.name, event.pageSize, event.pageIndex += 1);
   }
 }
