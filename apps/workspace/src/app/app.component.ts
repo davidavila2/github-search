@@ -9,9 +9,8 @@ import { map } from 'rxjs';
 
 export class AppComponent {
   defaultSearch = {
-    name: '',
-  };
-
+    name: ''
+  }
   users$!: Users;
 
   constructor(private githubService: GithubService) { }

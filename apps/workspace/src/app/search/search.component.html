@@ -1,0 +1,18 @@
+<div style="margin: 10px 0;">
+  <form #searchForm="ngForm" (ngSubmit)="search.emit(searchForm.value.user)">
+    <div style="display: flex; flex-direction: row-reverse; justify-content: space-around;">
+      <mat-paginator *ngIf="users as user" [length]="users?.total_count" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 15, 20]" (page)="pageChange.emit
+        ($event)" aria-label="Select page">
+      </mat-paginator>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Outline form field</mat-label>
+        <input matInput name="user" [(ngModel)]="defaultSearch.name" name="user" required />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button [disabled]="searchForm.invalid" type="submit">find users</button>
+  </form>
+</div>

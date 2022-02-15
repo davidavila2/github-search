@@ -7,9 +7,11 @@ import { MaterialModule } from '@github-search/material';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchComponent } from './search/search.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SearchComponent, UserListComponent],
   imports: [
     BrowserModule,
     MaterialModule,

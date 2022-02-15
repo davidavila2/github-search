@@ -1,47 +1,5 @@
 <mat-toolbar color="primary"></mat-toolbar>
-
-<div style="margin: 10px 0;">
-  <form #searchForm="ngForm" (ngSubmit)="searchForUser(searchForm.value.user)">
-    <div style="display: flex; flex-direction: row-reverse; justify-content: space-around;">
-      <mat-paginator *ngIf="users$ as user" [length]="users$?.total_count" [pageSize]="10"
-        [pageSizeOptions]="[5, 10, 15, 20]" (page)="letsChangeThePage($event)" aria-label="Select page">
-      </mat-paginator>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Outline form field</mat-label>
-        <input matInput name="user" [(ngModel)]="defaultSearch.name" name="user" required />
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
-    </div>
-
-    <button mat-raised-button [disabled]="searchForm.invalid" type="submit">find users</button>
-  </form>
-</div>
-
-<!-- SEARCH -->
-<div *ngIf="users$ as user; else loading" style="display: flex; flex-direction: column;">
-  <section style="display: flex; justify-content: center;">
-    <h2># of results: {{user.total_count}}</h2>
-  </section>
-  <section
-    style="display: flex; flex-direction: row; justify-content: space-evenly; gap: 15px; margin: auto; flex-wrap: wrap;">
-    <mat-card *ngFor="let item of user?.items" style="max-width: 300px">
-      <mat-card-header>
-        <mat-card-title>{{item.login}}</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image style="max-width: 300px;" [src]="item?.avatar_url">
-      <mat-card-content>
-        <p>Stuff goes here</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <a [href]="item.html_url" target="_blank">
-          <button routerLink="item.html_url" mat-raised-button>
-            See me in Github
-          </button>
-        </a>
-      </mat-card-actions>
-    </mat-card>
-  </section>
-</div>
-
-<ng-template #loading>Search for a user!</ng-template>
+<github-search [users]="users$" (search)="searchForUser($event)" (pageChange)="letsChangeThePage($event)"
+  [defaultSearch]="defaultSearch">
+</github-search>
+<github-search-user-list [users]="users$"></github-search-user-list>

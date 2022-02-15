@@ -1,0 +1,26 @@
+<div *ngIf="users as user; else loading" style="display: flex; flex-direction: column;">
+  <section style="display: flex; justify-content: center;">
+    <h2># of results: {{user.total_count}}</h2>
+  </section>
+  <section
+    style="display: flex; flex-direction: row; justify-content: space-evenly; gap: 15px; margin: auto; flex-wrap: wrap;">
+    <mat-card *ngFor="let item of user?.items" style="max-width: 300px">
+      <mat-card-header>
+        <mat-card-title>{{item.login}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image style="max-width: 300px;" [src]="item?.avatar_url">
+      <mat-card-content>
+        <p>Stuff goes here</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a [href]="item.html_url" target="_blank">
+          <button routerLink="item.html_url" mat-raised-button>
+            See me in Github
+          </button>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+</div>
+
+<ng-template #loading>Search for a user!</ng-template>
