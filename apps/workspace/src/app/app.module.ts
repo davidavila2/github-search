@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, UserListComponent],
+  declarations: [AppComponent, SearchComponent, UserListComponent, UserInfoDialogComponent],
   imports: [
     BrowserModule,
     MaterialModule,

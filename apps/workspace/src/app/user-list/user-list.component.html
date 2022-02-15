@@ -9,15 +9,10 @@
         <mat-card-title>{{item.login}}</mat-card-title>
       </mat-card-header>
       <img mat-card-image style="max-width: 300px;" [src]="item?.avatar_url">
-      <mat-card-content>
-        <p>Stuff goes here</p>
-      </mat-card-content>
       <mat-card-actions>
-        <a [href]="item.html_url" target="_blank">
-          <button routerLink="item.html_url" mat-raised-button>
-            See me in Github
-          </button>
-        </a>
+        <button mat-raised-button (click)="openDialog(item.login)">
+          Click me to see more details
+        </button>
       </mat-card-actions>
     </mat-card>
   </section>

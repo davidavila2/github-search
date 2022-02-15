@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GithubService, Users } from '@github-search/core-data';
+import { GithubService, SingleUser, Users } from '@github-search/core-data';
 import { map } from 'rxjs';
 @Component({
   selector: 'github-search-root',
@@ -12,11 +12,12 @@ export class AppComponent {
     name: ''
   }
   users$!: Users;
+  singleUser$!: SingleUser
 
   constructor(private githubService: GithubService) { }
 
-  searchForUser(user: string, perPage?: number, page?: number): void {
-    this.githubService.searchForUser(user, perPage, page).pipe(
+  searchForUsers(user: string, perPage?: number, page?: number): void {
+    this.githubService.searchForUsers(user, perPage, page).pipe(
       map((users) => this.users$ = users)
     ).subscribe()
   }
@@ -24,6 +25,6 @@ export class AppComponent {
   letsChangeThePage(event: any) {
     event.page = 1;
 
-    this.searchForUser(this.defaultSearch.name, event.pageSize, event.pageIndex += 1);
+    this.searchForUsers(this.defaultSearch.name, event.pageSize, event.pageIndex += 1);
   }
 }

@@ -1,5 +1,5 @@
 <mat-toolbar color="primary"></mat-toolbar>
-<github-search [users]="users$" (search)="searchForUser($event)" (pageChange)="letsChangeThePage($event)"
+<github-search [users]="users$" (search)="searchForUsers($event)" (pageChange)="letsChangeThePage($event)"
   [defaultSearch]="defaultSearch">
 </github-search>
 <github-search-user-list [users]="users$"></github-search-user-list>

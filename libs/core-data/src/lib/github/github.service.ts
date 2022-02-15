@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Users } from './users';
+import { Users, SingleUser } from './users';
 const BASE_URL = 'https://api.github.com/search/users';
+const USER_URL = 'https://api.github.com/users'
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,15 @@ export class GithubService {
     return BASE_URL;
   };
 
-  getUrlForUser(user: string, perPage?: number, page?: number): string {
+  getUrlForUsers(user: string, perPage?: number, page?: number): string {
     return `${this.getUrl()}?q=${user}&per_page=${perPage}&page=${page}`;
   };
 
-  searchForUser(user: string, perPage = 10, page = 1): Observable<Users> {
-    return this.http.get<Users>(this.getUrlForUser(user, perPage, page));
+  searchForUsers(user: string, perPage = 3, page = 1): Observable<Users> {
+    return this.http.get<Users>(this.getUrlForUsers(user, perPage, page));
   };
+
+  searchForUser(username: string): Observable<SingleUser> {
+    return this.http.get<SingleUser>(`${USER_URL}/${username}`);
+  }
 }
